@@ -51,3 +51,33 @@ Clean up binary from the last build:
 ```bash
 make clean
 ```
+
+
+## How to run sampleproject
+
+- build binaries
+  
+```bash
+barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects/NCMT/trainings/my_context/myrepos/sampleproject$ go build -o main cmd/api/main.go 
+barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects/NCMT/trainings/my_context/myrepos/sampleproject$ go build -o migrate cmd/migrate/migrate.go
+```
+
+- open a terminal and run:
+
+```
+barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects/NCMT/trainings/my_context/myrepos/sampleproject$ ./migrate 
+2025/03/12 20:14:15 Running database migrations...
+2025/03/12 20:14:15 Migration completed successfully
+barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects/NCMT/trainings/my_context/myrepos/sampleproject$ ./main 
+Server running on :8080
+```
+
+- from another terminal run:
+
+```
+barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects/NCMT/trainings/my_context/myrepos/sampleproject$ curl -X POST http://localhost:8080/users -H "Content-Type: application/json"      -d @data.json
+"post was successful"
+barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects/NCMT/trainings/my_context/myrepos/sampleproject$ curl http://localhost:8080/users
+[{"Name":"betty","Username":"fgtrfGG43","Email":"betty@example.com"},{"Name":"giannakis","Username":"vlasiboy666","Email":"giannakis@example.com"}]
+barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects/NCMT/trainings/my_context/myrepos/sampleproject$
+```
