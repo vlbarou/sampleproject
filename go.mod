@@ -1,4 +1,4 @@
-module golang
+module github.com/vlbarou/sampleproject
 
 go 1.24.1
 

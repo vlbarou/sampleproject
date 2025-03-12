@@ -3,7 +3,7 @@ package database
 import (
 	"log"
 
-	"golang/internal/model"
+	"github.com/vlbarou/sampleproject/internal/model"
 	"gorm.io/gorm"
 )
 

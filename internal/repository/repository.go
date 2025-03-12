@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"golang/internal/model"
+	"github.com/vlbarou/sampleproject/internal/model"
 	"gorm.io/gorm"
 )
 

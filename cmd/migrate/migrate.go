@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"sampleproject/config"
-	"sampleproject/internal/database"
+	"github.com/vlbarou/sampleproject/config"
+	"github.com/vlbarou/sampleproject/internal/database"
 )
 
 func main() {

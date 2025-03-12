@@ -5,9 +5,9 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"golang/config"
-	"golang/internal/handler"
-	"golang/internal/repository"
+	"github.com/vlbarou/sampleproject/config"
+	"github.com/vlbarou/sampleproject/internal/handler"
+	"github.com/vlbarou/sampleproject/internal/repository"
 	"gorm.io/gorm"
 )
 

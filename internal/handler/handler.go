@@ -2,11 +2,11 @@ package handler
 
 import (
 	"encoding/json"
-	"golang/pkg/validator"
+	"github.com/vlbarou/sampleproject/pkg/validator"
 	"net/http"
 
-	"golang/internal/model"
-	"golang/internal/repository"
+	"github.com/vlbarou/sampleproject/internal/model"
+	"github.com/vlbarou/sampleproject/internal/repository"
 )
 
 type UserHandler struct {

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"golang/config"
-	"golang/internal/database"
+	"github.com/vlbarou/sampleproject/config"
+	"github.com/vlbarou/sampleproject/internal/database"
 	"log"
 
-	"golang/internal/server"
+	"github.com/vlbarou/sampleproject/internal/server"
 )
 
 func main() {

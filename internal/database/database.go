@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"golang/config"
+	"github.com/vlbarou/sampleproject/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
