@@ -2,11 +2,11 @@ package handler
 
 import (
 	"encoding/json"
+	"github.com/vlbarou/sampleproject/internal/repository"
 	"github.com/vlbarou/sampleproject/pkg/validator"
 	"net/http"
 
 	"github.com/vlbarou/sampleproject/internal/model"
-	"github.com/vlbarou/sampleproject/internal/repository"
 )
 
 type UserHandler struct {
