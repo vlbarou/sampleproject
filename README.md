@@ -55,6 +55,12 @@ make clean
 
 ## How to run sampleproject
 
+- start a database container
+
+```bash
+docker run --name mariadb-container -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=testdb -e MYSQL_USER=user -e MYSQL_PASSWORD=password -p 3306:3306 -d mariadb:latest
+```
+
 - build binaries
   
 ```bash
