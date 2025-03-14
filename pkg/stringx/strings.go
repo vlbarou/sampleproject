@@ -24,7 +24,6 @@ func AreEqualIgnoreCase(str1, str2 string) bool {
 }
 
 func IsBlankOrEmpty(value string) bool {
-
 	return IsBlank(value) || IsEmpty(value)
 }
 

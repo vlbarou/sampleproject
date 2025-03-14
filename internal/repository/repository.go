@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"errors"
 	"github.com/vlbarou/sampleproject/internal/model"
 	"gorm.io/gorm"
 )
@@ -21,4 +22,13 @@ func (r *UserRepository) GetAllUsers() ([]model.User, error) {
 	var users []model.User
 	err := r.db.Find(&users).Error
 	return users, err
+}
+
+func (r *UserRepository) GetUserByID(id uint) (*model.User, error) {
+	var user model.User
+	result := r.db.First(&user, id)
+	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		return nil, nil
+	}
+	return &user, result.Error
 }

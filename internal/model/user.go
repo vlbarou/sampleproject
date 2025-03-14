@@ -1,16 +1,21 @@
 package model
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/vlbarou/sampleproject/internal/serializer"
+)
 
 type User struct {
+	ID       uint `gorm:"primaryKey;autoIncrement"`
 	Name     string
 	Username string
 	Email    string
 }
 
-func NewUser(name, username, password string) *User {
+func NewUser(id uint, name, username, password string) *User {
 
 	return &User{
+		ID:       id,
 		Name:     name,
 		Username: username,
 		Email:    password,
@@ -41,7 +46,7 @@ func (u *User) getEmail() string {
 	return u.Email
 }
 
-// Implement the Stringer interface: fmt.Println(p) // Calls p.String() automatically
+// Implement the Stringer interface: fmt.Println(p) Calls p.String() automatically
 func (u User) String() string {
-	return fmt.Sprintf("User{Name: %s, Username: %d}", u.Name, u.Username)
+	return fmt.Sprintf("User: " + serializer.MarshalStructOrEmpty(u))
 }
