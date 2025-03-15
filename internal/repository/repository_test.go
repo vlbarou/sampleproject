@@ -22,7 +22,7 @@ func setupMockDB() (*gorm.DB, sqlmock.Sqlmock, error) {
 		SkipInitializeWithVersion: true, // Skips version check for MariaDB
 	}), &gorm.Config{
 		SkipDefaultTransaction: true,                                // Disables implicit transactions. In this case there is no need to add mock.ExpectBegin() and mock.ExpectCommit() around insert commands
-		Logger:                 logger.Default.LogMode(logger.Info), // Enable SQL loggin
+		Logger:                 logger.Default.LogMode(logger.Info), // Enable SQL logging
 	})
 
 	return gormDB, mock, err
@@ -88,7 +88,7 @@ func TestGetUserByID(t *testing.T) {
 	assert.NoError(t, mock.ExpectationsWereMet())
 }
 
-func TestGetAllUsers(t *testing.T) {
+func TestGetAllUsers2(t *testing.T) {
 	db, mock, err := setupMockDB()
 	assert.NoError(t, err)
 	defer db.DB()

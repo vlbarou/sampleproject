@@ -13,8 +13,21 @@ type UserHandler struct {
 	repo *repository.UserRepository
 }
 
+type HealthResponse struct {
+	Health string `json:"message"`
+}
+
 func NewUserHandler(repo *repository.UserRepository) *UserHandler {
 	return &UserHandler{repo: repo}
+}
+
+func (h *UserHandler) GetHealth(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	// logic to retrieve the health status, typically implemented at service layer
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(HealthResponse{Health: "running"})
 }
 
 func (h *UserHandler) GetUsers(w http.ResponseWriter, r *http.Request) {
@@ -24,6 +37,15 @@ func (h *UserHandler) GetUsers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.NewEncoder(w).Encode(users)
+}
+
+func (h *UserHandler) GetUserById(w http.ResponseWriter, r *http.Request) {
+	user, err := h.repo.GetUserByID(2)
+	if err != nil {
+		http.Error(w, "Failed to fetch users", http.StatusInternalServerError)
+		return
+	}
+	json.NewEncoder(w).Encode(user)
 }
 
 func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {

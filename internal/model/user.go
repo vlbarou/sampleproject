@@ -48,5 +48,5 @@ func (u *User) getEmail() string {
 
 // Implement the Stringer interface: fmt.Println(p) Calls p.String() automatically
 func (u User) String() string {
-	return fmt.Sprintf("User: " + serializer.MarshalStructOrEmpty(u))
+	return fmt.Sprintf("User: " + serializer.MarshalOrEmpty(u))
 }

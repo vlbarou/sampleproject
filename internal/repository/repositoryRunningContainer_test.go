@@ -101,7 +101,7 @@ func TestGetUserById(t *testing.T) {
 	t.Logf("User inserted successfully with ID: %d", user.ID)
 }
 
-func TestGetAaaUsers(t *testing.T) {
+func TestGetAllUsers1(t *testing.T) {
 	// Connect to your MariaDB database
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		"user", "password", "localhost", "3306", "testdb")

@@ -133,7 +133,7 @@ func TestGetUserById1(t *testing.T) {
 	assert.Equal(t, user.Email, retrievedUser.Email)
 }
 
-func TestGetAaaUsers1(t *testing.T) {
+func TestGetAllUsers3(t *testing.T) {
 	db, cleanup := setupTestDB()
 	defer cleanup()
 
