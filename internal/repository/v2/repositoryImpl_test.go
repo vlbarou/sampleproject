@@ -81,7 +81,7 @@ func TestGetUserByID(t *testing.T) {
 	// Assertions
 	assert.NoError(t, err)
 	assert.NotNil(t, user)
-	assert.Equal(t, uint(1), user.ID)
+	assert.Equal(t, 1, user.ID)
 	assert.Equal(t, "John Doe", user.Name)
 
 	// Ensure expectations were met

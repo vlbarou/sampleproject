@@ -5,9 +5,14 @@ import (
 	"github.com/vlbarou/sampleproject/internal/repository/v2"
 	"github.com/vlbarou/sampleproject/pkg/validator"
 	"net/http"
+	"strconv"
 
 	"github.com/vlbarou/sampleproject/internal/model"
 )
+
+type Response struct {
+	Message string
+}
 
 type UserHandler struct {
 	repo v2.UserRepository
@@ -21,15 +26,6 @@ func NewUserHandler(repo v2.UserRepository) *UserHandler {
 	return &UserHandler{repo: repo}
 }
 
-func (h *UserHandler) GetHealth(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-
-	// logic to retrieve the health status, typically implemented at service layer
-
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(HealthResponse{Health: "running"})
-}
-
 func (h *UserHandler) GetUsers(w http.ResponseWriter, r *http.Request) {
 	users, err := h.repo.GetAllUsers()
 	if err != nil {
@@ -40,11 +36,26 @@ func (h *UserHandler) GetUsers(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *UserHandler) GetUserById(w http.ResponseWriter, r *http.Request) {
-	user, err := h.repo.GetUserByID(2)
+	idStr := r.URL.Query().Get("id")
+	if idStr == "" {
+		http.Error(w, `{"error": "id is required"}`, http.StatusBadRequest)
+		return
+	}
+
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		http.Error(w, `{"error": "invalid id"}`, http.StatusBadRequest)
+		return
+	}
+
+	user, err := h.repo.GetUserByID(id)
 	if err != nil {
 		http.Error(w, "Failed to fetch users", http.StatusInternalServerError)
 		return
 	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(user)
 }
 
@@ -70,6 +81,9 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode("post was successful")
+	json.NewEncoder(w).Encode(Response{
+		Message: "User created",
+	})
 }

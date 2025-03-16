@@ -24,11 +24,11 @@ func (r *UserRepositoryImpl) GetAllUsers() ([]model.User, error) {
 	return users, err
 }
 
-func (r *UserRepositoryImpl) GetUserByID(id uint) (*model.User, error) {
+func (r *UserRepositoryImpl) GetUserByID(id int) (model.User, error) {
 	var user model.User
 	result := r.db.First(&user, id)
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-		return nil, nil
+		return model.User{}, nil
 	}
-	return &user, result.Error
+	return user, result.Error
 }

@@ -25,12 +25,12 @@ func (m *MockUserRepository) GetAllUsers() ([]model.User, error) {
 	return nil, args.Error(1)
 }
 
-func (m *MockUserRepository) GetUserByID(id uint) (*model.User, error) {
+func (m *MockUserRepository) GetUserByID(id int) (model.User, error) {
 	args := m.Called(id)
 	if args.Get(0) != nil {
-		return args.Get(0).(*model.User), args.Error(1)
+		return args.Get(0).(model.User), args.Error(1)
 	}
-	return nil, args.Error(1)
+	return model.User{}, args.Error(1)
 }
 
 //func (m *MockUserRepository) CreateUser(user *model.User) error {

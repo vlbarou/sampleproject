@@ -22,12 +22,11 @@ func NewServer(cfg *config.Config, db *gorm.DB) *Server {
 
 func (s *Server) Start() error {
 	r := mux.NewRouter()
-
-	userRepo := repoV2.NewUserRepository(s.db)
-	userHandler := handlerV2.NewUserHandler(userRepo)
+	userHandler := handlerV2.NewUserHandler(repoV2.NewUserRepository(s.db))
 
 	r.HandleFunc("/users", userHandler.GetUsers).Methods("GET")
-	r.HandleFunc("/users", userHandler.CreateUser).Methods("POST")
+	r.HandleFunc("/user", userHandler.GetUserById).Methods("GET")
+	r.HandleFunc("/user", userHandler.CreateUser).Methods("POST")
 
 	addr := ":8080"
 	fmt.Printf("Server running on %s\n", addr)

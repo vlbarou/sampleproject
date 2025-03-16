@@ -6,13 +6,13 @@ import (
 )
 
 type User struct {
-	ID       uint `gorm:"primaryKey;autoIncrement"`
+	ID       int `gorm:"primaryKey;autoIncrement"`
 	Name     string
 	Username string
 	Email    string
 }
 
-func NewUser(id uint, name, username, password string) *User {
+func NewUser(id int, name, username, password string) *User {
 
 	return &User{
 		ID:       id,

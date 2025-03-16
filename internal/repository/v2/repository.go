@@ -7,5 +7,5 @@ import "github.com/vlbarou/sampleproject/internal/model"
 type UserRepository interface {
 	CreateUser(user *model.User) error
 	GetAllUsers() ([]model.User, error)
-	GetUserByID(id uint) (*model.User, error)
+	GetUserByID(id int) (model.User, error)
 }
