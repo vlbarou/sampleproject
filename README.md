@@ -87,3 +87,7 @@ barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects
 [{"Name":"betty","Username":"fgtrfGG43","Email":"betty@example.com"},{"Name":"giannakis","Username":"vlasiboy666","Email":"giannakis@example.com"}]
 barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects/NCMT/trainings/my_context/myrepos/sampleproject$
 ```
+
+## Project Structure Examples
+- https://github.com/kubernetes/utils
+- https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor
