@@ -91,3 +91,7 @@ barousis@barousis-HP-ZBook-Fury-16-G9-Mobile-Workstation-PC:~/Documents/projects
 ## Project Structure Examples
 - https://github.com/kubernetes/utils
 - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor
+
+## Go blueprint
+- https://github.com/Melkeydev/go-blueprint
+- https://go-blueprint.dev/
